@@ -12,8 +12,6 @@ const SeoHead = (props: any) => {
       <meta property="og:image" content={image} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={description || SEO_DESCRIPTION} />
-      <meta name="twitter:site" content="basong.camp" />
-      <meta name="twitter:url" content="https://basong.camp/" />
       <meta name="twitter:title" content={title || SEO_TITLE} />
       <meta name="twitter:image" content={image || SEO_IMAGE} />
       <link rel="icon" href={image || SEO_IMAGE} />
