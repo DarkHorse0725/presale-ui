@@ -3,6 +3,7 @@ import Prices from "./Prices"
 import BaseChains from "../BaseChains"
 import Amount from "../Amount"
 import Cost from "../Cost"
+import ConnectButton from "../ConnectButton"
 
 const PhaseContent = () => (
   <div className="">
@@ -15,6 +16,7 @@ const PhaseContent = () => (
         <Cost />
       </div>
     </div>
+    <ConnectButton />
   </div>
 )
 
