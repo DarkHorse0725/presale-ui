@@ -1,5 +1,7 @@
+import FadeInWhenVisible from "@/components/FadeInWhenVisible"
+
 const PhaseFeature = () => (
-  <div className="bg-gray_2 w-full h-full rounded-[24px] overflow-hidden">
+  <FadeInWhenVisible className="bg-gray_2 w-full h-full rounded-[24px] overflow-hidden">
     <div
       className="w-full h-full px-[30px] py-[50px]
         flex flex-col justify-between
@@ -50,6 +52,6 @@ const PhaseFeature = () => (
         </button>
       </div>
     </div>
-  </div>
+  </FadeInWhenVisible>
 )
 export default PhaseFeature
