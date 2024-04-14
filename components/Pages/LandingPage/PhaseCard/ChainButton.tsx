@@ -8,7 +8,7 @@ const ChainButton = ({ chainIcon = "", chainName }) => (
   >
     <Media
       type="image"
-      link= {chainIcon}
+      link={chainIcon}
       blurLink={chainIcon}
       containerClasses="w-[20px] aspect-[1/1]"
     />
