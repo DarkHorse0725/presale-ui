@@ -9,8 +9,8 @@ const Prices = () => (
 
     <div className="w-full border border-gray_5 rounded-[30px] border-[0.8px] border-gray_5 flex items-center justify-center">
       <p className="font-poppins_medium text-gray_5 py-2 px-3 text-center text-[10px]">
-        Listing Price = $0.0700
-        <span className="text-green_3">&nbsp; (+700.00%)</span>
+        Next Price = $0.0200
+        <span className="text-green_3">&nbsp; (+100.00%)</span>
       </p>
     </div>
   </div>
