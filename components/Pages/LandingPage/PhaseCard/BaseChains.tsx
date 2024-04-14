@@ -1,10 +1,18 @@
 import useClickOutside from "@/hooks/useClickOutSide"
 import Icon from "@/shared/Icon"
 import Media from "@/shared/Media"
+import { useState } from "react"
 import ChainButton from "./ChainButton"
 
 const BaseChains = () => {
+  const chains = [
+    { label: "Ethereum", link: "/images/ETH.svg" },
+    { label: "Polygon", link: "/images/MATIC.svg" },
+    { label: "Arbitrum", link: "/images/ARB.svg" },
+  ]
+
   const { selectRef, setIsVisibleSelect, isVisibleSelect } = useClickOutside()
+  const [selectedChain, setSelectedChain] = useState(chains[0])
 
   return (
     <div className="flex flex-col items-start justify-between bg-black_3 p-[15px] rounded-[10px]">
@@ -19,11 +27,11 @@ const BaseChains = () => {
           <div className="flex gap-2 items-center texh-white">
             <Media
               type="image"
-              link="/images/ETH.svg"
-              blurLink="/images/ETH.svg"
+              link={selectedChain.link}
+              blurLink={selectedChain.link}
               containerClasses="w-[20px] aspect-[1/1]"
             />
-            <p className="text-white">ETH</p>
+            <p className="text-white">{selectedChain.label}</p>
           </div>
           <Icon name={isVisibleSelect ? "arrowUp" : "arrowDown"} size={25} color="white" raw />
         </button>
@@ -33,9 +41,10 @@ const BaseChains = () => {
                 bg-black_4 py-2 px-3 items-center
                 w-full rounded-md flex flex-col gap-2"
           >
-            <ChainButton chainIcon="/images/ETH.svg" chainName="Ethereum" />
-            <ChainButton chainIcon="/images/MATIC.svg" chainName="Polygon" />
-            <ChainButton chainIcon="/images/ARB.svg" chainName="Arbitrum" />
+            {chains.map((chain, i) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <ChainButton key={i} data={chain} handleClick={setSelectedChain} />
+            ))}
           </div>
         )}
       </div>
