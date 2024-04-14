@@ -40,7 +40,9 @@ const BaseChains = () => {
           <div
             className="absolute top-full left-0 z-[2]
                 bg-black_4 py-2 px-3 items-center
-                w-full rounded-md flex flex-col gap-2"
+                w-[90%] rounded-md flex flex-col gap-2
+                left-[50%] translate-x-[-50%] border 
+                border-pink_1 "
           >
             {chains.map((chain, i) => (
               // eslint-disable-next-line react/no-array-index-key

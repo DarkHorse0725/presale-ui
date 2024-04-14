@@ -5,7 +5,7 @@ const ChainButton = ({ data, handleClick = (data: any) => {} }) => (
   <button
     type="button"
     onClick={() => handleClick(data)}
-    className="flex gap-2 items-center w-full justify-start text-white font-poppins_medium"
+    className="flex gap-2 items-center w-full text-white justify-start text-white font-poppins_medium"
   >
     <Media
       type="image"
@@ -13,7 +13,7 @@ const ChainButton = ({ data, handleClick = (data: any) => {} }) => (
       blurLink={data.link}
       containerClasses="w-[20px] aspect-[1/1]"
     />
-    {data.name}
+    {data.label}
   </button>
 )
 
