@@ -28,6 +28,7 @@ module.exports = {
         black_2: "#222222",
         black_3: "#0E0D0E",
         black_4: "#15161E", 
+        pink_1: "#E758AB"
       },
       fontFamily: {
         poppins: ["Poppins Regular", "sans-serif"],
