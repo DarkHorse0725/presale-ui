@@ -27,6 +27,13 @@
   src: url("/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Poppins ExtraLight";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Poppins/Poppins-ExtraLight.ttf") format("truetype");
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
