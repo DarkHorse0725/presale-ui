@@ -1,10 +1,7 @@
-import useClickOutside from "@/hooks/useClickOutSide"
 import Media from "@/shared/Media"
 import { useState } from "react"
 
 const BaseChains = () => {
-  // eslint-disable-next-line
-  const { selectRef, setIsVisibleSelect, isVisibleSelect } = useClickOutside()
   const [amount, setAmount] = useState(0)
 
   const onChangeAmount = (e) => {
@@ -22,7 +19,7 @@ const BaseChains = () => {
       <p className="font-poppins_medium text-[10px] text-gray_5">
         INPUT THE AMOUNT YOU WANT TO BUY
       </p>
-      <div className="w-full relative mt-[30px]" ref={selectRef}>
+      <div className="w-full relative mt-[20px]">
         <div className="flex flex-col items-end">
           <span className="text-[10px] font-poppins_medium text-gray_6">Max</span>
           <div

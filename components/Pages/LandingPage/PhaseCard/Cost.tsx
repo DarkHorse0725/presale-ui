@@ -4,7 +4,7 @@ import { useState } from "react"
 
 const Cost = () => {
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-  const { selectRef, setIsVisibleSelect, isVisibleSelect } = useClickOutside()
+  const { selectRef } = useClickOutside()
   const [amount, setAmount] = useState(0)
 
   const onChangeAmount = (e) => {
@@ -26,7 +26,7 @@ const Cost = () => {
           <span className="font-poppins_medium text-gray_6 text-[10px]">$0.00</span>
         </div>
       </div>
-      <div className="w-full flex justify-between items-center mt-6">
+      <div className="w-full flex justify-between items-center mt-[20px]">
         <Media
           type="image"
           link="/images/birdbyte.svg"
@@ -36,7 +36,7 @@ const Cost = () => {
         <div className="relative" ref={selectRef}>
           <div
             className="flex w-full gap-2 items-center justify-between
-                pr-2  rounded-[10px] p-[5px]"
+                pr-2 rounded-[10px] p-[5px]"
           >
             <div className="w-full bg-black_4 flex justify-between items-center gap-2 items-center text-white px-2 py-1 rounded-[10px]">
               <Media
