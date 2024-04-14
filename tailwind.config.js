@@ -20,7 +20,14 @@ module.exports = {
         white: "#ffffff",
         gray_1: "#A7A7A8",
         gray_2: "#17181B",
-        
+        gray_3: "#8C8C8C",
+        gray_4: "#646464",
+        gray_5: "#AAA4B2",
+        gray_6: "#545454",
+        green_3: "#A6E964",
+        black_2: "#222222",
+        black_3: "#0E0D0E",
+        black_4: "#15161E", 
       },
       fontFamily: {
         poppins: ["Poppins Regular", "sans-serif"],
