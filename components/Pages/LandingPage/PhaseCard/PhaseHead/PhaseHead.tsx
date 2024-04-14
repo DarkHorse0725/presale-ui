@@ -5,9 +5,9 @@ const PhaseHead = () => (
       <p className="text- text-[12px] font-poppins_medium text-gray_3">birdbyte Presale</p>
     </div>
     <div className="flex gap-[10px] items-center">
-      <span className="text-white font-poppins_extraLight">1 $BIRDB</span>
+      <span className="text-white font-poppins_extralignt text-[20px]">1 $BIRDB</span>
       <span className="font-poppins text-white">=</span>
-      <span className="text-white font-poppins_extralignt">$0.0100</span>
+      <span className="text-white font-poppins_semibold text-[20px]">$0.0100</span>
     </div>
   </div>
 )

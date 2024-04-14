@@ -8,8 +8,8 @@ const ChainButton = ({ chainIcon = "", chainName }) => (
   >
     <Media
       type="image"
-      link="/images/ARB.svg"
-      blurLink="/images/ARB.png"
+      link= {chainIcon}
+      blurLink={chainIcon}
       containerClasses="w-[20px] aspect-[1/1]"
     />
     {chainName}
