@@ -23,12 +23,12 @@ const BaseChains = () => {
         INPUT THE AMOUNT YOU WANT TO BUY
       </p>
       <div className="w-full relative mt-[30px]" ref={selectRef}>
-        <div
-          className="flex flex-col items-end"
-        >
+        <div className="flex flex-col items-end">
           <span className="text-[10px] font-poppins_medium text-gray_6">Max</span>
-          <div className="flex w-full gap-2 items-center justify-between
-                pr-2 bg-black_4 rounded-[10px] p-[5px]">
+          <div
+            className="flex w-full gap-2 items-center justify-between
+                pr-2 bg-black_4 rounded-[10px] p-[5px]"
+          >
             <Media
               type="image"
               link="/images/ETH.svg"
