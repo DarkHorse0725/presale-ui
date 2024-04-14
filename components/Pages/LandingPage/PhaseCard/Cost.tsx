@@ -41,8 +41,8 @@ const Cost = () => {
             <div className="w-full flex justify-between items-center gap-2 items-center text-white">
               <Media
                 type="image"
-                link="/images/ETH.svg"
-                blurLink="/images/ETH.svg"
+                link="/images/birdbyte.svg"
+                blurLink="/images/birdbyte.svg"
                 containerClasses="w-[20px] aspect-[1/1]"
               />
               <input
