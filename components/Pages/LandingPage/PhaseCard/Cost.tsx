@@ -3,7 +3,6 @@ import Media from "@/shared/Media"
 import { useState } from "react"
 
 const Cost = () => {
-  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   const { selectRef } = useClickOutside()
   const [amount, setAmount] = useState(0)
 
@@ -52,6 +51,7 @@ const Cost = () => {
                                 !text-right text-white flex-grow !font-poppins_medium"
                 placeholder="Enter amount"
                 onChange={onChangeAmount}
+                readOnly
               />
             </div>
           </div>

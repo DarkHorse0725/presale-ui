@@ -18,19 +18,19 @@ const PhaseFeature = () => (
         <div className="flex items-center justify-between mt-2">
           <button
             type="button"
-            className="transition duration-[300ms] hover:scale-[1.1] rounded-[10px] bg-gray_2 py-2 px-4 text-gray_7 font-poppins_medium"
+            className="transition duration-[300ms] hover:scale-[1.01] rounded-[10px] bg-gray_2 py-2 px-4 text-gray_7 font-poppins_medium"
           >
             ETH
           </button>
           <button
             type="button"
-            className="transition duration-[300ms] hover:scale-[1.1] rounded-[10px] bg-gray_2 py-2 px-4 text-gray_7 font-poppins_medium"
+            className="transition duration-[300ms] hover:scale-[1.01] rounded-[10px] bg-gray_2 py-2 px-4 text-gray_7 font-poppins_medium"
           >
             BASE CHAIN
           </button>
           <button
             type="button"
-            className="transition duration-[300ms] hover:scale-[1.1] rounded-[10px] bg-gray_2 py-2 px-4 text-gray_7 font-poppins_medium"
+            className="transition duration-[300ms] hover:scale-[1.01] rounded-[10px] bg-gray_2 py-2 px-4 text-gray_7 font-poppins_medium"
           >
             SOL
           </button>

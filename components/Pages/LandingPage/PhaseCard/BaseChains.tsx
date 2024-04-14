@@ -6,9 +6,9 @@ import ChainButton from "./ChainButton"
 
 const BaseChains = () => {
   const chains = [
-    { label: "Ethereum", link: "/images/ETH.svg" },
-    { label: "Polygon", link: "/images/MATIC.svg" },
-    { label: "Arbitrum", link: "/images/ARB.svg" },
+    { label: "ETH", link: "/images/ETH.svg" },
+    { label: "USDT", link: "/images/usdt.svg" },
+    { label: "USDC", link: "/images/usdc.svg" },
   ]
 
   const { selectRef, setIsVisibleSelect, isVisibleSelect } = useClickOutside()
