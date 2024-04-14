@@ -21,7 +21,8 @@ const BaseChains = () => {
         <button
           type="button"
           className="flex w-full gap-2 items-center justify-between
-                pr-2 bg-black_4 rounded-[10px] p-[5px] font-poppins_medium"
+                pr-2 bg-black_4 rounded-[10px] p-[5px] font-poppins_medium
+                "
           onClick={() => setIsVisibleSelect(!isVisibleSelect)}
         >
           <div className="flex gap-2 items-center texh-white">
