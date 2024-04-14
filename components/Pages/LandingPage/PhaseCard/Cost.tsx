@@ -1,9 +1,7 @@
-import useClickOutside from "@/hooks/useClickOutSide"
 import useCostAmount from "@/hooks/useCostAmount"
 import Media from "@/shared/Media"
 
 const Cost = () => {
-  const { selectRef } = useClickOutside()
   const { costAmount, onChangeCostAmount } = useCostAmount()
 
   return (
@@ -22,12 +20,15 @@ const Cost = () => {
           blurLink="/images/birdbyte.png"
           containerClasses="w-[97px] aspect-[90/15]"
         />
-        <div className="relative" ref={selectRef}>
+        <div className="relative">
           <div
             className="flex w-full gap-2 items-center justify-between
                 pr-2 rounded-[10px] p-[5px]"
           >
-            <div className="w-full bg-black_4 flex justify-between items-center gap-2 items-center text-white px-2 py-1 rounded-[10px]">
+            <div
+              className="w-full bg-black_4 flex justify-between items-center gap-2 
+            text-white px-2 py-1.5 rounded-[10px]"
+            >
               <Media
                 type="image"
                 link="/images/SvgjsG1022.svg"
@@ -38,7 +39,7 @@ const Cost = () => {
                 type="text"
                 value={costAmount}
                 className="bg-black_4 !outline-none !border-none
-                                !text-right text-white flex-grow !font-poppins_medium"
+                                !text-right text-white !font-poppins_medium"
                 placeholder="Enter amount"
                 onChange={onChangeCostAmount}
                 readOnly

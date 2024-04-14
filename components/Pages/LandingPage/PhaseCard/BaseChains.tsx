@@ -1,12 +1,12 @@
 import useClickOutside from "@/hooks/useClickOutSide"
 import Icon from "@/shared/Icon"
 import Media from "@/shared/Media"
-import useBaseChainAmount from "@/hooks/useBaseChainAmount"
+import useBaseChainAmount, { chainsData } from "@/hooks/useBaseChainAmount"
 import ChainButton from "./ChainButton"
 
 const BaseChains = () => {
   const { selectRef, setIsVisibleSelect, isVisibleSelect } = useClickOutside()
-  const { chains, setSelectedChain, selectedChain } = useBaseChainAmount()
+  const { setSelectedChain, selectedChain } = useBaseChainAmount()
 
   return (
     <div className="flex flex-col items-start justify-between bg-black_3 p-[15px] rounded-[10px]">
@@ -16,7 +16,7 @@ const BaseChains = () => {
           type="button"
           className="flex w-full gap-2 items-center justify-between
                 px-2 bg-black_4 rounded-[10px] font-poppins_medium
-                py-1"
+                py-1.5"
           onClick={() => setIsVisibleSelect(!isVisibleSelect)}
         >
           <div className="flex gap-2 items-center texh-white">
@@ -38,7 +38,7 @@ const BaseChains = () => {
                 left-[50%] translate-x-[-50%] border 
                 border-pink_1 "
           >
-            {chains.map((chain, i) => (
+            {chainsData.map((chain, i) => (
               // eslint-disable-next-line react/no-array-index-key
               <ChainButton key={i} data={chain} onClick={() => setSelectedChain(chain)} />
             ))}
