@@ -37,6 +37,7 @@ module.exports = {
         poppins_semibold: ["Poppins SemiBold", "sans-serif"],
         poppins_medium: ["Poppins Medium", "sans-serif"],
         poppins_bold: ["Poppins Bold", "sans-serif"],
+        poppins_extralignt: ["Poppins ExtraLight", "sans-serif"],
       },
       screens: {
         'ios' : '320px',
