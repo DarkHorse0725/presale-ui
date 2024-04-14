@@ -11,7 +11,7 @@ const TargetBar = () => (
       />
     </div>
     <div className="w-full flex justify-end">
-      <span className="text-gray_4 font-Poppins mt-1 text-[10px]">Target: $3,000,000</span>
+      <span className="text-gray_4 font-poppins_medium mt-1 text-[10px]">Target: $3,000,000</span>
     </div>
   </div>
 )

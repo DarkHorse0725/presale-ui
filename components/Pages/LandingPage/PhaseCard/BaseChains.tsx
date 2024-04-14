@@ -21,8 +21,8 @@ const BaseChains = () => {
         <button
           type="button"
           className="flex w-full gap-2 items-center justify-between
-                pr-2 bg-black_4 rounded-[10px] p-[5px] font-poppins_medium
-                "
+                px-2 bg-black_4 rounded-[10px] font-poppins_medium
+                py-1"
           onClick={() => setIsVisibleSelect(!isVisibleSelect)}
         >
           <div className="flex gap-2 items-center texh-white">
@@ -34,7 +34,7 @@ const BaseChains = () => {
             />
             <p className="text-white">{selectedChain.label}</p>
           </div>
-          <Icon name={isVisibleSelect ? "arrowUp" : "arrowDown"} size={25} color="white" raw />
+          <Icon name={isVisibleSelect ? "arrowUp" : "arrowDown"} size={20} color="white" raw />
         </button>
         {isVisibleSelect && (
           <div

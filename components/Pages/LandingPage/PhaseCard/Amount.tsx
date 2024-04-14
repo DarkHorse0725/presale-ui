@@ -27,7 +27,7 @@ const BaseChains = () => {
           <span className="text-[10px] font-poppins_medium text-gray_6">Max</span>
           <div
             className="flex w-full gap-2 items-center justify-between
-                pr-2 bg-black_4 rounded-[10px] p-[5px]"
+                 bg-black_4 rounded-[10px] overflow-hidden px-2 py-1 text-[16px]"
           >
             <Media
               type="image"
@@ -38,7 +38,7 @@ const BaseChains = () => {
             <input
               type="text"
               value={amount}
-              className="bg-black_4 !outline-none !border-none
+              className="bg-black_4 !outline-none !border-none text-[16px]
                                 !text-right text-white !font-poppins_medium flex-grow"
               placeholder="Enter amount"
               onChange={onChangeAmount}
