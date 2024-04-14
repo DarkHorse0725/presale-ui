@@ -4,11 +4,13 @@ import Container from "../Container"
 
 const Header = () => (
   <Container
-    contentClassName="w-full flex justify-between py-[15px] px-[10px]"
     containerClassName="flex items-center justify-between"
+    contentClassName="w-full grid grid-cols-10 gap-[10px]"
   >
-    <CTASection />
-    <div className="flex items-center justify-center px-[10px] py-[10px] bg-gray_2 rounded-[20px]">
+    <div className="col-span-6">
+      <CTASection />
+    </div>
+    <div className="flex items-center col-span-4 justify-center px-[10px] py-[10px] rounded-[20px]">
       <ConnectButton />
     </div>
   </Container>

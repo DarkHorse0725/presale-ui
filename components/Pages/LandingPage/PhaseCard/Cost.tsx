@@ -49,7 +49,7 @@ const Cost = () => {
                 type="text"
                 value={amount}
                 className="bg-black_4 !outline-none !border-none
-                                !text-right text-white flex-grow"
+                                !text-right text-white flex-grow !font-poppins_medium"
                 placeholder="Enter amount"
                 onChange={onChangeAmount}
               />

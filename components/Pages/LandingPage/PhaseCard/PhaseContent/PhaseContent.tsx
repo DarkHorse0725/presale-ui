@@ -9,7 +9,7 @@ const PhaseContent = () => (
   <div className="">
     <TargetBar />
     <Prices />
-    <div className="grid grid-cols-2 gap-[20px] mt-[20px]">
+    <div className="grid grid-cols-2 gap-x-[20px] gap-y-[10px] mt-[10px]">
       <BaseChains />
       <Amount />
       <div className="col-span-2">

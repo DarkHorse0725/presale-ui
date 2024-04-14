@@ -15,6 +15,7 @@ import {
   polygonMumbai,
   sepolia,
 } from "@wagmi/core/chains"
+
 import { ToastContainer } from "react-toastify"
 import * as React from "react"
 import { alchemyProvider } from "wagmi/providers/alchemy"
@@ -30,7 +31,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(myChains
 ])
 
 const { wallets } = getDefaultWallets({
-  appName: "Bookie Bet",
+  appName: "PRESALE-UI",
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string,
   chains,
 })

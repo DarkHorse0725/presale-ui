@@ -27,18 +27,18 @@ const BaseChains = () => {
           className="flex w-full gap-2 items-center justify-between
                 pr-2 bg-black_4 rounded-[10px] p-[5px]"
         >
-          <div className="w-full flex items-center gap-2 items-center text-white">
+          <div className="w-full flex items-center text-white">
             <Media
               type="image"
               link="/images/ETH.svg"
-              blurLink="/images/ETH.svg"
+              blurLink="/images/ETH.png"
               containerClasses="w-[20px] aspect-[1/1]"
             />
             <input
               type="text"
               value={amount}
               className="bg-black_4 !outline-none !border-none
-                                !text-right text-white flex-grow"
+                                !text-right text-white !font-poppins_medium flex-grow"
               placeholder="Enter amount"
               onChange={onChangeAmount}
             />

@@ -5,10 +5,7 @@ import PhaseCard from "./PhaseCard"
 
 const LandingPage = () => (
   <Layout type="base">
-    <Container
-      containerClassName="flex mt-[100px]"
-      contentClassName="grid grid-cols-10 px-4 gap-12"
-    >
+    <Container containerClassName="flex mt-6" contentClassName="grid grid-cols-10 gap-[50px]">
       <div className="col-span-6">
         <PhaseCard />
       </div>

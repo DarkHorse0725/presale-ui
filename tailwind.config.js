@@ -24,11 +24,13 @@ module.exports = {
         gray_4: "#646464",
         gray_5: "#AAA4B2",
         gray_6: "#545454",
+        gray_7: "#9A9E9F",
         green_3: "#A6E964",
         black_2: "#222222",
         black_3: "#0E0D0E",
         black_4: "#15161E", 
-        pink_1: "#E758AB"
+        pink_1: "#E758AB",
+        pink_2: "#E95BAF",
       },
       fontFamily: {
         poppins: ["Poppins Regular", "sans-serif"],
