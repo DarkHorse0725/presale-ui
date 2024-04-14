@@ -1,7 +1,7 @@
 const ConnectButton = () => (
   <div
     className="w-full flex justify-center items-center 
-  rounded-[30px] p-2 border border-[#222222] 
+  rounded-[30px] p-2 border border-black_2 
   mt-4 transition duration-[300ms] hover:scale-[1.1]"
   >
     <button

@@ -1,7 +1,6 @@
 import Link from "next/link"
 
 const CTAList = () => (
-  // eslint-disable
   <div className="flex gap-[20px]">
     <Link href="/whitepapper">
       <div className="cursor-pointer font-poppins_medium text-[16px] text-gray_1">Whitepaper</div>

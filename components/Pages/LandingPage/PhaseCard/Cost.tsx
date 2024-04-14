@@ -1,20 +1,10 @@
 import useClickOutside from "@/hooks/useClickOutSide"
+import useCostAmount from "@/hooks/useCostAmount"
 import Media from "@/shared/Media"
-import { useState } from "react"
 
 const Cost = () => {
   const { selectRef } = useClickOutside()
-  const [amount, setAmount] = useState(0)
-
-  const onChangeAmount = (e) => {
-    const temp = parseInt(e.target.value, 10)
-
-    if (Number.isNaN(temp)) {
-      setAmount(0)
-      return
-    }
-    setAmount(temp)
-  }
+  const { costAmount, onChangeCostAmount } = useCostAmount()
 
   return (
     <div className="flex flex-col items-start justify-content-center bg-black_3 p-[15px] rounded-[10px]">
@@ -46,11 +36,11 @@ const Cost = () => {
               />
               <input
                 type="text"
-                value={amount}
+                value={costAmount}
                 className="bg-black_4 !outline-none !border-none
                                 !text-right text-white flex-grow !font-poppins_medium"
                 placeholder="Enter amount"
-                onChange={onChangeAmount}
+                onChange={onChangeCostAmount}
                 readOnly
               />
             </div>

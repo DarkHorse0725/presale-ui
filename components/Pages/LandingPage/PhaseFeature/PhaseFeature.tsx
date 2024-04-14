@@ -1,4 +1,5 @@
 import FadeInWhenVisible from "@/components/FadeInWhenVisible"
+import PhaseButton from "./PhaseButton"
 
 const PhaseFeature = () => (
   <FadeInWhenVisible className="bg-gray_2 w-full h-full rounded-[24px] overflow-hidden">
@@ -16,30 +17,10 @@ const PhaseFeature = () => (
           of the Year.
         </div>
         <div className="flex items-center justify-between mt-2">
-          <button
-            type="button"
-            className="transition duration-[300ms] hover:scale-[1.01] rounded-[10px] bg-gray_2 py-2 px-4 text-gray_7 font-poppins_medium"
-          >
-            ETH
-          </button>
-          <button
-            type="button"
-            className="transition duration-[300ms] hover:scale-[1.01] rounded-[10px] bg-gray_2 py-2 px-4 text-gray_7 font-poppins_medium"
-          >
-            BASE CHAIN
-          </button>
-          <button
-            type="button"
-            className="transition duration-[300ms] hover:scale-[1.01] rounded-[10px] bg-gray_2 py-2 px-4 text-gray_7 font-poppins_medium"
-          >
-            SOL
-          </button>
-          <button
-            type="button"
-            className="transition duration-[300ms] hover:scale-[1.1] rounded-[10px] bg-gray_2 py-2 px-4 text-gray_7 font-poppins_medium"
-          >
-            BSC
-          </button>
+          <PhaseButton>ETH</PhaseButton>
+          <PhaseButton>BASE CHAIN</PhaseButton>
+          <PhaseButton>SOL</PhaseButton>
+          <PhaseButton>BSC</PhaseButton>
         </div>
       </div>
       <div className="transition duration-[300ms] hover:scale-[1.1] p-2 bg-gray_2 rounded-[30px] active:scale-[1.1]">

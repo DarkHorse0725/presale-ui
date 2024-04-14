@@ -1,4 +1,4 @@
-const GetHelp = () => (
+const GetHelpButton = () => (
   <button
     type="button"
     className="transition duration-[300ms] hover:scale-[1.01] 
@@ -9,4 +9,4 @@ const GetHelp = () => (
   </button>
 )
 
-export default GetHelp
+export default GetHelpButton

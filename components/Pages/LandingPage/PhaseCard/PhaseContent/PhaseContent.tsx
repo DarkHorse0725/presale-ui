@@ -6,7 +6,7 @@ import Cost from "../Cost"
 import ConnectButton from "../ConnectButton"
 
 const PhaseContent = () => (
-  <div className="">
+  <>
     <TargetBar />
     <Prices />
     <div className="grid grid-cols-2 gap-x-[20px] gap-y-[10px] mt-[10px]">
@@ -17,7 +17,7 @@ const PhaseContent = () => (
       </div>
     </div>
     <ConnectButton />
-  </div>
+  </>
 )
 
 export default PhaseContent

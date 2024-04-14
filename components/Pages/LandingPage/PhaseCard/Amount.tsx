@@ -1,18 +1,8 @@
+import useBaseChainAmount from "@/hooks/useBaseChainAmount"
 import Media from "@/shared/Media"
-import { useState } from "react"
 
 const BaseChains = () => {
-  const [amount, setAmount] = useState(0)
-
-  const onChangeAmount = (e) => {
-    const temp = parseInt(e.target.value, 10)
-
-    if (Number.isNaN(temp)) {
-      setAmount(0)
-      return
-    }
-    setAmount(temp)
-  }
+  const { amount, onChangeAmount } = useBaseChainAmount()
 
   return (
     <div className="flex flex-col items-start justify-between bg-black_3 p-[15px] rounded-[10px]">

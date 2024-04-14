@@ -1,18 +1,12 @@
 import useClickOutside from "@/hooks/useClickOutSide"
 import Icon from "@/shared/Icon"
 import Media from "@/shared/Media"
-import { useState } from "react"
+import useBaseChainAmount from "@/hooks/useBaseChainAmount"
 import ChainButton from "./ChainButton"
 
 const BaseChains = () => {
-  const chains = [
-    { label: "ETH", link: "/images/ETH.svg" },
-    { label: "USDT", link: "/images/usdt.svg" },
-    { label: "USDC", link: "/images/usdc.svg" },
-  ]
-
   const { selectRef, setIsVisibleSelect, isVisibleSelect } = useClickOutside()
-  const [selectedChain, setSelectedChain] = useState(chains[0])
+  const { chains, setSelectedChain, selectedChain } = useBaseChainAmount()
 
   return (
     <div className="flex flex-col items-start justify-between bg-black_3 p-[15px] rounded-[10px]">
@@ -46,7 +40,7 @@ const BaseChains = () => {
           >
             {chains.map((chain, i) => (
               // eslint-disable-next-line react/no-array-index-key
-              <ChainButton key={i} data={chain} handleClick={setSelectedChain} />
+              <ChainButton key={i} data={chain} onClick={() => setSelectedChain(chain)} />
             ))}
           </div>
         )}
