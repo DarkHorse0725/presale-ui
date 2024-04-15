@@ -1,8 +1,8 @@
-import useCostAmount from "@/hooks/useCostAmount"
+import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import Media from "@/shared/Media"
 
 const Cost = () => {
-  const { costAmount, onChangeCostAmount } = useCostAmount()
+  const { costAmount, onChangeCostAmount } = usePhaseCard()
 
   return (
     <div className="flex flex-col items-start justify-content-center bg-black_3 p-[15px] rounded-[10px]">
