@@ -1,12 +1,12 @@
 import { useMemo } from "react"
 
 const usePrepareSolana = () => {
-    const solana = useMemo(() => {
-        const { solana } = window as any
-        return solana?.isPhantom ? solana : null
-    }, [window])
+  const solana = useMemo(() => {
+    const { solana } = window as any
+    return solana?.isPhantom ? solana : null
+  }, [window])
 
-    return { solana }
+  return { solana }
 }
 
 export default usePrepareSolana

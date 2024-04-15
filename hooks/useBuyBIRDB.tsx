@@ -25,18 +25,19 @@ const useBuyBIRDB = () => {
     try {
       let response = null
       const amount = parseFloat(baseAmount)
-      switch(selectedChain.symbol) {
-          case "ETH":
-            response = await sendEther(amount)
-            break;
-          case "USDT":
-          case "USDC":
-            response = await sendUSDTorUSDC(amount)
-            break;
-          case "SOL":
-            response = await sendSOL(amount)
-            break;
-          default: break;
+      switch (selectedChain.symbol) {
+        case "ETH":
+          response = await sendEther(amount)
+          break
+        case "USDT":
+        case "USDC":
+          response = await sendUSDTorUSDC(amount)
+          break
+        case "SOL":
+          response = await sendSOL(amount)
+          break
+        default:
+          break
       }
       const { error } = response as any
       if (error) {
