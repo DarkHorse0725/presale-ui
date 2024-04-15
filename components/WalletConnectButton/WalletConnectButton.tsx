@@ -7,14 +7,7 @@ interface WalletConnectButtonProps {
 }
 const WalletConnectButton: FC<WalletConnectButtonProps> = ({ children }) => (
   <ConnectButton.Custom>
-    {({
-      account,
-      chain,
-      openChainModal,
-      openConnectModal,
-      authenticationStatus,
-      mounted,
-    }) => {
+    {({ account, chain, openChainModal, openConnectModal, authenticationStatus, mounted }) => {
       const ready = mounted && authenticationStatus !== "loading"
       const connected =
         ready &&
@@ -36,8 +29,7 @@ const WalletConnectButton: FC<WalletConnectButtonProps> = ({ children }) => (
           {(() => {
             if (!connected) {
               return (
-                <button onClick={openConnectModal} type="button"
-                className="w-full">
+                <button onClick={openConnectModal} type="button" className="w-full">
                   {children ?? "Connect Wallet"}
                 </button>
               )
@@ -49,11 +41,7 @@ const WalletConnectButton: FC<WalletConnectButtonProps> = ({ children }) => (
                 </button>
               )
             }
-            return (
-              <div>
-                {children}
-              </div>
-            )
+            return <div>{children}</div>
           })()}
         </div>
       )

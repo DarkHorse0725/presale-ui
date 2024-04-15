@@ -1,12 +1,13 @@
 import useClickOutside from "@/hooks/useClickOutSide"
 import Icon from "@/shared/Icon"
 import Media from "@/shared/Media"
-import useBaseChainAmount, { chainsData } from "@/hooks/useBaseChainAmount"
+import { chainsData } from "@/hooks/useBaseChainAmount"
+import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import ChainButton from "./ChainButton"
 
 const BaseChains = () => {
   const { selectRef, setIsVisibleSelect, isVisibleSelect } = useClickOutside()
-  const { setSelectedChain, selectedChain } = useBaseChainAmount()
+  const { setSelectedChain, selectedChain } = usePhaseCard()
 
   return (
     <div className="flex flex-col items-start justify-between bg-black_3 p-[15px] rounded-[10px]">

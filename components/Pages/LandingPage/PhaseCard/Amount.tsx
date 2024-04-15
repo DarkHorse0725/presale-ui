@@ -1,8 +1,8 @@
-import useBaseChainAmount from "@/hooks/useBaseChainAmount"
+import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import Media from "@/shared/Media"
 
 const BaseChains = () => {
-  const { amount, onChangeAmount } = useBaseChainAmount()
+  const { baseAmount, onChangeBaseAmount } = usePhaseCard()
 
   return (
     <div className="flex flex-col items-start justify-between bg-black_3 p-[15px] rounded-[10px]">
@@ -24,12 +24,12 @@ const BaseChains = () => {
             />
             <input
               type="text"
-              value={amount}
+              value={baseAmount}
               className="bg-black_4 !max-w-[120px] 
               !outline-none !border-none text-[16px]
               !text-right text-white !font-poppins_medium"
               placeholder="Enter amount"
-              onChange={onChangeAmount}
+              onChange={onChangeBaseAmount}
             />
           </div>
         </div>

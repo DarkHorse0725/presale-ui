@@ -4,7 +4,7 @@ import { useAccount } from "wagmi"
 const ConnectButton = () => {
   const { address } = useAccount()
   const signer = useEthersSigner()
-  
+
   return (
     <div
       className="w-full flex justify-center items-center 

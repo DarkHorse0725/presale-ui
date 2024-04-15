@@ -1,3 +1,3 @@
-import BuyButton from "./BuyButton";
+import BuyButton from "./BuyButton"
 
 export default BuyButton

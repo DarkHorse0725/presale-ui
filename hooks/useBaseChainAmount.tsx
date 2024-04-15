@@ -7,22 +7,22 @@ export const chainsData = [
 ]
 
 const useBaseChainAmount = () => {
-  const [amount, setAmount] = useState(0)
+  const [baseAmount, setBaseAmount] = useState(0)
   const [selectedChain, setSelectedChain] = useState(chainsData[0])
 
-  const onChangeAmount = (e) => {
+  const onChangeBaseAmount = (e) => {
     const temp = parseInt(e.target.value, 10)
 
     if (Number.isNaN(temp)) {
-      setAmount(0)
+      setBaseAmount(0)
       return
     }
-    setAmount(temp)
+    setBaseAmount(temp)
   }
   return {
-    amount,
-    setAmount,
-    onChangeAmount,
+    baseAmount,
+    setBaseAmount,
+    onChangeBaseAmount,
     selectedChain,
     setSelectedChain,
   }

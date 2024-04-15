@@ -1,11 +1,11 @@
+import WalletConnectButton from "@/components/WalletConnectButton"
+import { useEthersSigner } from "@/hooks/useEthersSigner"
 import TargetBar from "./TargetBar"
 import Prices from "./Prices"
 import BaseChains from "../BaseChains"
 import Amount from "../Amount"
 import Cost from "../Cost"
 import ConnectButton from "../ConnectButton"
-import WalletConnectButton from "@/components/WalletConnectButton"
-import { useEthersSigner } from "@/hooks/useEthersSigner"
 import BuyButton from "../BuyButton"
 
 const PhaseContent = () => {
@@ -22,9 +22,13 @@ const PhaseContent = () => {
           <Cost />
         </div>
       </div>
-      {signer ? <BuyButton /> : <WalletConnectButton>
-        <ConnectButton /> 
-      </WalletConnectButton>}
+      {signer ? (
+        <BuyButton />
+      ) : (
+        <WalletConnectButton>
+          <ConnectButton />
+        </WalletConnectButton>
+      )}
     </>
   )
 }

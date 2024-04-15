@@ -5,16 +5,7 @@ import "react-toastify/dist/ReactToastify.css"
 import type { AppProps } from "next/app"
 import { RainbowKitProvider, getDefaultWallets, connectorsForWallets } from "@rainbow-me/rainbowkit"
 import { configureChains, createConfig, WagmiConfig } from "wagmi"
-import {
-  base,
-  baseSepolia,
-  mainnet,
-  optimism,
-  optimismSepolia,
-  polygon,
-  polygonMumbai,
-  sepolia,
-} from "@wagmi/core/chains"
+import { base, baseSepolia, bsc, bscTestnet, mainnet, sepolia } from "@wagmi/core/chains"
 
 import { ToastContainer } from "react-toastify"
 import * as React from "react"
@@ -23,8 +14,8 @@ import { publicProvider } from "wagmi/providers/public"
 import { ThemeProvider } from "@/providers/ThemeProvider"
 
 const myChains = process.env.NEXT_PUBLIC_TESTNET
-  ? [sepolia, baseSepolia, optimismSepolia, polygonMumbai]
-  : [mainnet, base, optimism, polygon]
+  ? [sepolia, baseSepolia, bscTestnet]
+  : [mainnet, base, bsc]
 const { chains, publicClient, webSocketPublicClient } = configureChains(myChains as any, [
   alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY }),
   publicProvider(),
