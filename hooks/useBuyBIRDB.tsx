@@ -1,8 +1,8 @@
-import { BIRDB_ADDRESS } from "@/lib/consts"
+import { BIRDB_ADDRESS, BIRDB_BASE_ADDRESS } from "@/lib/consts"
 import { Contract } from "ethers"
 import birdByteAbi from "@/lib/abi/birdbyte-abi.json"
 import { useEthersSigner } from "@/hooks/useEthersSigner"
-import { useAccount } from "wagmi"
+import { sepolia, useAccount, useChainId } from "wagmi"
 import { useState } from "react"
 import handleTxError from "@/lib/handleTxError"
 import { usePhaseCard } from "@/providers/PhaseCardProvder"
@@ -14,6 +14,7 @@ import useSendSOL from "./useSendSOL"
 const useBuyBIRDB = () => {
   const signer = useEthersSigner()
   const { address } = useAccount()
+  const chainId = useChainId()
   const [loading, setLoading] = useState(false)
   const { selectedChain, baseAmount } = usePhaseCard()
   const { sendEther } = useSendEhter()
@@ -44,7 +45,8 @@ const useBuyBIRDB = () => {
         setLoading(false)
         return
       }
-      const contract = new Contract(BIRDB_ADDRESS, birdByteAbi, signer)
+      const birdByteAddress = chainId === sepolia.id ? BIRDB_ADDRESS : BIRDB_BASE_ADDRESS
+      const contract = new Contract(birdByteAddress, birdByteAbi, signer)
       const tx = await contract.preSaleMint(address, 1)
       await tx.wait()
       toast.success("Success!")
