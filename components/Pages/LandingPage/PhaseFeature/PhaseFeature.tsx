@@ -1,11 +1,11 @@
 import FadeInWhenVisible from "@/components/FadeInWhenVisible"
-import { useEthersSigner } from "@/hooks/useEthersSigner"
 import { useAccount } from "wagmi"
+import truncateEthAddress from "@/lib/truncateAddress"
+import WalletConnectButton from "@/components/WalletConnectButton"
 import PhaseButton from "./PhaseButton"
 
 const PhaseFeature = () => {
-  const { address } = useAccount()
-  const signer = useEthersSigner()
+  const { address, isConnected } = useAccount()
   return (
     <FadeInWhenVisible className="bg-gray_2 w-full h-full rounded-[24px] overflow-hidden">
       <div
@@ -28,15 +28,18 @@ const PhaseFeature = () => {
             <PhaseButton>BSC</PhaseButton>
           </div>
         </div>
-        <div className="transition duration-[300ms] hover:scale-[1.1] p-2 bg-gray_2 rounded-[30px] active:scale-[1.1]">
-          <button
-            type="button"
-            className="bg-pink_2 flex justify-center items-center 
-          text-white text-[16px] w-full px-4 py-2 rounded-[20px] font-poppins"
-          >
-            {signer ? address : `Connect`}
-          </button>
-        </div>
+        <WalletConnectButton>
+          <div className="transition duration-[300ms] hover:scale-[1.1] p-2 bg-gray_2 rounded-[30px] active:scale-[1.1]">
+            <button
+              type="button"
+              className={`bg-pink_2 flex justify-center items-center 
+                 text-white text-[16px] w-full px-4 py-2 rounded-[20px] font-poppins 
+                ${!isConnected ? "normal-case" : "lowercase"}`}
+            >
+              {!isConnected ? `Connect` : truncateEthAddress(address)}
+            </button>
+          </div>
+        </WalletConnectButton>
       </div>
     </FadeInWhenVisible>
   )
