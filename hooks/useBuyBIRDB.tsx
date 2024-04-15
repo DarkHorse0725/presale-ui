@@ -45,7 +45,7 @@ const useBuyBIRDB = () => {
         return
       }
       const contract = new Contract(BIRDB_ADDRESS, birdByteAbi, signer)
-      const tx = await contract.preSaleMint(address, 10)
+      const tx = await contract.preSaleMint(address, 1)
       await tx.wait()
       toast.success("Success!")
     } catch (error) {

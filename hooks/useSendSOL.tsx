@@ -28,7 +28,6 @@ const useSendSOL = () => {
       // return tx
     } catch (error) {
       handleTxError(error)
-      console.log("ZIAD ERROR", error)
       return { error }
     }
   }
