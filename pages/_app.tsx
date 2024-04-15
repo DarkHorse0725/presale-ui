@@ -6,7 +6,6 @@ import type { AppProps } from "next/app"
 import { RainbowKitProvider, getDefaultWallets, connectorsForWallets } from "@rainbow-me/rainbowkit"
 import { configureChains, createConfig, WagmiConfig } from "wagmi"
 import { base, baseSepolia, bsc, bscTestnet, mainnet, sepolia } from "@wagmi/core/chains"
-
 import { ToastContainer } from "react-toastify"
 import * as React from "react"
 import { alchemyProvider } from "wagmi/providers/alchemy"

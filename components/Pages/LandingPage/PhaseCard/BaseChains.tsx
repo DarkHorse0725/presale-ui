@@ -9,6 +9,10 @@ const BaseChains = () => {
   const { selectRef, setIsVisibleSelect, isVisibleSelect } = useClickOutside()
   const { setSelectedChain, selectedChain } = usePhaseCard()
 
+  const onClickChain = (chain) => {
+    setSelectedChain(chain)
+    setIsVisibleSelect(!isVisibleSelect)
+  }
   return (
     <div className="flex flex-col items-start justify-between bg-black_3 p-[15px] rounded-[10px]">
       <p className="font-poppins_medium text-[10px] text-gray_5">SELECT A PAYMENT METHOD</p>
@@ -23,11 +27,11 @@ const BaseChains = () => {
           <div className="flex gap-2 items-center texh-white">
             <Media
               type="image"
-              link={selectedChain.link}
-              blurLink={selectedChain.link}
+              link={selectedChain?.link}
+              blurLink={selectedChain?.link}
               containerClasses="w-[20px] aspect-[1/1]"
             />
-            <p className="text-white">{selectedChain.label}</p>
+            <p className="text-white">{selectedChain?.symbol}</p>
           </div>
           <Icon name={isVisibleSelect ? "arrowUp" : "arrowDown"} size={20} color="white" raw />
         </button>
@@ -41,7 +45,7 @@ const BaseChains = () => {
           >
             {chainsData.map((chain, i) => (
               // eslint-disable-next-line react/no-array-index-key
-              <ChainButton key={i} data={chain} onClick={() => setSelectedChain(chain)} />
+              <ChainButton key={i} data={chain} onClick={() => onClickChain(chain)} />
             ))}
           </div>
         )}

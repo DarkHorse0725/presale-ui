@@ -1,5 +1,6 @@
 import WalletConnectButton from "@/components/WalletConnectButton"
 import { useEthersSigner } from "@/hooks/useEthersSigner"
+import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import TargetBar from "./TargetBar"
 import Prices from "./Prices"
 import BaseChains from "../BaseChains"
@@ -10,6 +11,7 @@ import BuyButton from "../BuyButton"
 
 const PhaseContent = () => {
   const signer = useEthersSigner()
+  const { selectedChain } = usePhaseCard()
 
   return (
     <>
@@ -22,12 +24,17 @@ const PhaseContent = () => {
           <Cost />
         </div>
       </div>
-      {signer ? (
-        <BuyButton />
-      ) : (
-        <WalletConnectButton>
-          <ConnectButton />
-        </WalletConnectButton>
+      {selectedChain?.symbol !== "SOL" && (
+        // eslint-disable-next-line react/jsx-no-useless-fragment
+        <>
+          {signer ? (
+            <BuyButton />
+          ) : (
+            <WalletConnectButton>
+              <ConnectButton />
+            </WalletConnectButton>
+          )}
+        </>
       )}
     </>
   )

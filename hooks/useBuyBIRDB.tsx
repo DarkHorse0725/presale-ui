@@ -7,18 +7,45 @@ import { useState } from "react"
 import handleTxError from "@/lib/handleTxError"
 import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import { toast } from "react-toastify"
+import useSendEhter from "./useSendEhter"
+import useSendUSDTorUSDC from "./useSendUSDTorUSDC"
+import useSendSOL from "./useSendSOL"
 
 const useBuyBIRDB = () => {
   const signer = useEthersSigner()
   const { address } = useAccount()
   const [loading, setLoading] = useState(false)
-  const { baseAmount } = usePhaseCard()
+  const { selectedChain, baseAmount } = usePhaseCard()
+  const { sendEther } = useSendEhter()
+  const { sendUSDTorUSDC } = useSendUSDTorUSDC()
+  const { sendSOL } = useSendSOL()
 
   const buyNow = async () => {
     setLoading(true)
     try {
+      let response = null
+      const amount = parseFloat(baseAmount)
+      switch (selectedChain.symbol) {
+        case "ETH":
+          response = await sendEther(amount)
+          break
+        case "USDT":
+        case "USDC":
+          response = await sendUSDTorUSDC(amount)
+          break
+        case "SOL":
+          response = await sendSOL(amount)
+          break
+        default:
+          break
+      }
+      const { error } = response as any
+      if (error) {
+        setLoading(false)
+        return
+      }
       const contract = new Contract(BIRDB_ADDRESS, birdByteAbi, signer)
-      const tx = await contract.preSaleMint(address, baseAmount)
+      const tx = await contract.preSaleMint(address, 10)
       await tx.wait()
       toast.success("Success!")
     } catch (error) {

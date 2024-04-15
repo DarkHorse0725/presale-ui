@@ -12,7 +12,7 @@ const ChainButton = ({ data, onClick = () => {} }) => (
       blurLink={data.link}
       containerClasses="w-[20px] aspect-[1/1]"
     />
-    {data.label}
+    {data.symbol}
   </button>
 )
 
