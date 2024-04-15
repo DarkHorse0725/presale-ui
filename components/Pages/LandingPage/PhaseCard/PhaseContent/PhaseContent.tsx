@@ -7,9 +7,12 @@ import Amount from "../Amount"
 import Cost from "../Cost"
 import ConnectButton from "../ConnectButton"
 import BuyButton from "../BuyButton"
+import { usePhaseCard } from "@/providers/PhaseCardProvder"
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 
 const PhaseContent = () => {
   const signer = useEthersSigner()
+  const  { selectedChain } = usePhaseCard()
 
   return (
     <>
@@ -22,13 +25,18 @@ const PhaseContent = () => {
           <Cost />
         </div>
       </div>
-      {signer ? (
-        <BuyButton />
-      ) : (
-        <WalletConnectButton>
-          <ConnectButton />
-        </WalletConnectButton>
-      )}
+      {selectedChain?.symbol !== "SOL" && <>
+        {signer ? (
+          <BuyButton />
+        ) : (
+          <WalletConnectButton>
+            <ConnectButton />
+          </WalletConnectButton>
+        )}
+      </>}
+      {selectedChain?.symbol === "SOL" && <>
+        <WalletMultiButton />
+      </>}
     </>
   )
 }
