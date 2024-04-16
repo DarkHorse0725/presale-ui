@@ -1,23 +1,15 @@
-import { useState } from "react"
+import { useEthPrice } from "@/providers/EthPriceProvider"
+import { useMemo, useState } from "react"
 
-const useCostAmount = () => {
-  const [costAmount, setCostAmount] = useState(0)
+const useCostAmount = (baseAmount) => {
+  const { ethPrice } = useEthPrice()
 
-  const onChangeCostAmount = (e) => {
-    const amount = e.target.value
-    const temp = parseInt(amount, 10)
-
-    if (Number.isNaN(temp)) {
-      setCostAmount(0)
-      return
-    }
-    setCostAmount(temp)
-  }
+  const costAmount = useMemo(()=>{
+    return baseAmount * ethPrice / 0.01
+  }, [baseAmount, ethPrice])
 
   return {
     costAmount,
-    setCostAmount,
-    onChangeCostAmount,
   }
 }
 

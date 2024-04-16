@@ -2,7 +2,7 @@ import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import Media from "@/shared/Media"
 
 const Cost = () => {
-  const { costAmount, onChangeCostAmount } = usePhaseCard()
+  const { costAmount } = usePhaseCard()
 
   return (
     <div className="flex flex-col items-start justify-content-center bg-black_3 p-[15px] rounded-[10px]">
@@ -41,7 +41,6 @@ const Cost = () => {
                 className="bg-black_4 !outline-none !border-none
                                 !text-right text-white !font-poppins_medium"
                 placeholder="Enter amount"
-                onChange={onChangeCostAmount}
                 readOnly
               />
             </div>
