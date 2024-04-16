@@ -1,26 +1,27 @@
-import { useState, useEffect } from "react"
-import getEthPrice from "../lib/getEthPrice"
+import { useState, useEffect, useMemo } from "react"
+import getCoinPrice from "../lib/getCoinPrice"
 
 const useEthPriceData = () => {
-  const [ethPrice, setEthPrice] = useState(0)
+  const [coinType, setCoinType] = useState("ETH")
+  const [coinPrice, setCoinPrice] = useState(0)
 
   useEffect(() => {
-    const init = async () => {
-      const price = await getEthPrice()
+    const fetchCoinPrice = async () => {
+      try {
+        const price = await getCoinPrice(coinType);
+        setCoinPrice(price);
+      } catch (error) {
+        console.error('Error fetching coin price:', error);
+        setCoinPrice(0);
+      }
+    };
 
-      setEthPrice(price)
-    }
-
-    init()
-  }, [])
-
-  const getEthConversion = (usdAmount) => (parseFloat(usdAmount) / ethPrice).toFixed(6)
-  const getUsdConversion = (ethAmount) => (parseFloat(ethAmount) * ethPrice).toFixed(2)
+    fetchCoinPrice();
+  }, [coinType]);
 
   return {
-    ethPrice,
-    getEthConversion,
-    getUsdConversion,
+    coinPrice,
+    setCoinType
   }
 }
 
