@@ -13,7 +13,7 @@ const useEthPriceData = () => {
 
     init()
   }, [])
-  
+
   const getEthConversion = (usdAmount) => (parseFloat(usdAmount) / ethPrice).toFixed(6)
   const getUsdConversion = (ethAmount) => (parseFloat(ethAmount) * ethPrice).toFixed(2)
 
