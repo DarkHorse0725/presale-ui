@@ -4,13 +4,16 @@ import Media from "@/shared/Media"
 import { chainsData } from "@/hooks/useBaseChainAmount"
 import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import ChainButton from "./ChainButton"
+import { useEthPrice } from "@/providers/EthPriceProvider"
 
 const BaseChains = () => {
   const { selectRef, setIsVisibleSelect, isVisibleSelect } = useClickOutside()
   const { setSelectedChain, selectedChain } = usePhaseCard()
+  const { setCoinType } = useEthPrice()
 
   const onClickChain = (chain) => {
     setSelectedChain(chain)
+    setCoinType(chain.symbol)
     setIsVisibleSelect(!isVisibleSelect)
   }
   return (
