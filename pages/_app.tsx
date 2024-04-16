@@ -18,6 +18,7 @@ import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets"
 import { clusterApiUrl } from "@solana/web3.js"
+import { EthPriceProvider } from "@/providers/EthPriceProvider"
 
 const myChains = process.env.NEXT_PUBLIC_TESTNET
   ? [sepolia, baseSepolia, bscTestnet]
@@ -56,10 +57,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <WalletModalProvider>
           <WagmiConfig config={wagmiConfig}>
             <RainbowKitProvider modalSize="compact" chains={chains}>
-              <ThemeProvider>
-                <Component {...pageProps} />
-                <ToastContainer />
-              </ThemeProvider>
+              <EthPriceProvider>
+                <ThemeProvider>
+                  <Component {...pageProps} />
+                  <ToastContainer />
+                </ThemeProvider>
+              </EthPriceProvider>
             </RainbowKitProvider>
           </WagmiConfig>
         </WalletModalProvider>

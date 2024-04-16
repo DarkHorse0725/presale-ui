@@ -1,23 +1,17 @@
-import { useState } from "react"
+import { useEthPrice } from "@/providers/EthPriceProvider"
+import { useMemo, useState } from "react"
 
-const useCostAmount = () => {
-  const [costAmount, setCostAmount] = useState(0)
+const useCostAmount = (baseAmount) => {
+  const { coinPrice } = useEthPrice()
+  console.log("ziad", coinPrice)
 
-  const onChangeCostAmount = (e) => {
-    const amount = e.target.value
-    const temp = parseInt(amount, 10)
-
-    if (Number.isNaN(temp)) {
-      setCostAmount(0)
-      return
-    }
-    setCostAmount(temp)
-  }
+  const costAmount = useMemo(() => {
+    const amount = (baseAmount * coinPrice) / 0.01
+    return parseFloat(amount.toFixed(2))
+  }, [baseAmount, coinPrice])
 
   return {
     costAmount,
-    setCostAmount,
-    onChangeCostAmount,
   }
 }
 
