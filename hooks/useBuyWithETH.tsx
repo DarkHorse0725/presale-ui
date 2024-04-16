@@ -12,7 +12,7 @@ import useSendUSDTorUSDC from "./useSendUSDTorUSDC"
 import useSendSOL from "./useSendSOL"
 import { baseSepolia, bscTestnet } from "viem/chains"
 
-const useBuyBIRDB = () => {
+const useBuyWithETH = () => {
   const signer = useEthersSigner()
   const { address } = useAccount()
   const chainId = useChainId()
@@ -67,4 +67,4 @@ const useBuyBIRDB = () => {
   }
 }
 
-export default useBuyBIRDB
+export default useBuyWithETH

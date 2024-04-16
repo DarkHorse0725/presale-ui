@@ -1,7 +1,7 @@
-import useBuyBIRDB from "@/hooks/useBuyBIRDB"
+import useBuyWithETH from "@/hooks/useBuyWithETH"
 
-const BuyButton = () => {
-  const { loading, buyNow } = useBuyBIRDB()
+const BuyWithETHButton = () => {
+  const { loading, buyNow } = useBuyWithETH()
 
   return (
     <button
@@ -22,4 +22,4 @@ const BuyButton = () => {
   )
 }
 
-export default BuyButton
+export default BuyWithETHButton
