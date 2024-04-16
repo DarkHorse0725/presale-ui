@@ -1,31 +1,34 @@
 import handleTxError from "@/lib/handleTxError"
-// import { Connection, PublicKey, clusterApiUrl, LAMPORTS_PER_SOL, sendAndConfirmTransaction  } from '@solana/web3.js';
-// import * as solanaWeb3 from "@solana/web3.js";
-// import * as anchor from "@project-serum/anchor";
-// import { Program, AnchorProvider, web3, utils } from '@project-serum/anchor';
-import usePrepareSolana from "./usePrepareSolana"
-// import { BIRDB_SOLANA_WALLET } from "@/lib/consts";
-// import { Wallet, useConnection, useWallet} from "@solana/wallet-adapter-react";
-// import { WalletNotConnectedError } from "@solana/wallet-adapter-base";
-// import { Transaction } from "@solana/web3.js";
-// import { useState } from "react";
+import { PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from "@solana/web3.js"
+import { BIRDB_SOLANA_WALLET } from "@/lib/consts"
+import { useWallet, useConnection } from "@solana/wallet-adapter-react"
 
 const useSendSOL = () => {
-  const { solana } = usePrepareSolana()
+  const { publicKey, sendTransaction } = useWallet()
+  const { connection } = useConnection()
+
   const sendSOL = async (amount) => {
     try {
-      // if (!publicKey) throw new WalletNotConnectedError();
-      // const response = await connectWallet()
-      // if (!response) return {error: true}
-      // const birdByteSolanaAddress = new solanaWeb3.PublicKey(
-      //   BIRDB_SOLANA_WALLET
-      // )
-      // const myAddress = new solanaWeb3.PublicKey(
-      //   "7rmPxigbHpz2jyJ961psKBbhUZX5Qi4TEyhmERha59Bz"
-      // )
-      // const signature = await sendTransaction(transaction, connection);
-      // const tx = await connection.confirmTransaction(signature, "processed");
-      // return tx
+      const birdByteSolanaAddress = new PublicKey(BIRDB_SOLANA_WALLET)
+      const {
+        context: { slot: minContextSlot },
+        value: { blockhash, lastValidBlockHeight },
+      } = await connection.getLatestBlockhashAndContext()
+
+      const transaction = new Transaction({
+        recentBlockhash: blockhash,
+      }).add(
+        SystemProgram.transfer({
+          fromPubkey: publicKey,
+          toPubkey: birdByteSolanaAddress,
+          lamports: amount * LAMPORTS_PER_SOL,
+        }),
+      )
+
+      const signature = await sendTransaction(transaction, connection, { minContextSlot })
+      await connection.confirmTransaction({ blockhash, lastValidBlockHeight, signature })
+
+      return signature
     } catch (error) {
       handleTxError(error)
       return { error }
