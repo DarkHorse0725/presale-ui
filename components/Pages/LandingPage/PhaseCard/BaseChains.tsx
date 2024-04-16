@@ -3,8 +3,8 @@ import Icon from "@/shared/Icon"
 import Media from "@/shared/Media"
 import { chainsData } from "@/hooks/useBaseChainAmount"
 import { usePhaseCard } from "@/providers/PhaseCardProvder"
-import ChainButton from "./ChainButton"
 import { useEthPrice } from "@/providers/EthPriceProvider"
+import ChainButton from "./ChainButton"
 
 const BaseChains = () => {
   const { selectRef, setIsVisibleSelect, isVisibleSelect } = useClickOutside()

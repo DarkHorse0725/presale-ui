@@ -8,20 +8,20 @@ const useEthPriceData = () => {
   useEffect(() => {
     const fetchCoinPrice = async () => {
       try {
-        const price = await getCoinPrice(coinType);
-        setCoinPrice(price);
+        const price = await getCoinPrice(coinType)
+        setCoinPrice(price)
       } catch (error) {
-        console.error('Error fetching coin price:', error);
-        setCoinPrice(0);
+        console.error("Error fetching coin price:", error)
+        setCoinPrice(0)
       }
-    };
+    }
 
-    fetchCoinPrice();
-  }, [coinType]);
+    fetchCoinPrice()
+  }, [coinType])
 
   return {
     coinPrice,
-    setCoinType
+    setCoinType,
   }
 }
 

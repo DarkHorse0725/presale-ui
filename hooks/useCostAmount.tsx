@@ -4,9 +4,10 @@ import { useMemo, useState } from "react"
 const useCostAmount = (baseAmount) => {
   const { coinPrice } = useEthPrice()
   console.log("ziad", coinPrice)
-  
-  const costAmount = useMemo(()=>{
-    return baseAmount * coinPrice / 0.01
+
+  const costAmount = useMemo(() => {
+    const amount = (baseAmount * coinPrice) / 0.01
+    return parseFloat(amount.toFixed(2))
   }, [baseAmount, coinPrice])
 
   return {

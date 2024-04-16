@@ -1,4 +1,4 @@
-import { Contract } from "ethers"
+import { BigNumber, Contract } from "ethers"
 import birdByteAbi from "@/lib/abi/birdbyte-abi.json"
 import { useEthersSigner } from "@/hooks/useEthersSigner"
 import { useAccount } from "wagmi"
@@ -16,6 +16,7 @@ const useBuyWithSOL = () => {
   const { baseAmount } = usePhaseCard()
   const { sendSOL } = useSendSOL()
   const birdByteAddress = useBirdByteAddress()
+  const { costAmount } = usePhaseCard()
 
   const buyNow = async () => {
     setLoading(true)
@@ -27,7 +28,7 @@ const useBuyWithSOL = () => {
         return
       }
       const contract = new Contract(birdByteAddress, birdByteAbi, signer)
-      const tx = await contract.preSaleMint(address, 1)
+      const tx = await contract.preSaleMint(address, BigNumber.from(costAmount))
       await tx.wait()
       toast.success("Success!")
     } catch (error) {
