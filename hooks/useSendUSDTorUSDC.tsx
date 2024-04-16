@@ -14,8 +14,6 @@ const useSendUSDTorUSDC = () => {
 
   const sendUSDTorUSDC = async (amount) => {
     try {
-      console.log(tokenAddress, "ZIAD")
-
       const contract = new Contract(tokenAddress, erc20ABI, signer)
       const tx = await contract.transfer(ADMIN_WALLET, parseUnits(amount.toString(), 6))
       await tx.wait()
