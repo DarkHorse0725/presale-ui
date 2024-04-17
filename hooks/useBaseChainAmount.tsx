@@ -5,7 +5,8 @@ export const chainsData = [
     link: "/images/usdt.svg",
     symbol: "USDT",
     address: {
-      "11155111": "0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0",
+      // "11155111": "0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0",
+      "11155111": "0x6aaD6DA416C7328C15832c0bC739fe437F41e467",
       "84532": "0x8ba3e15C01BFEb9708f909Ee14d9D54B2523fE71",
       "97": "0x29D827A5a08D50bD6f64bA135bCFE2C5d1108711",
     },

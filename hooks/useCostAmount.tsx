@@ -1,9 +1,8 @@
 import { useEthPrice } from "@/providers/EthPriceProvider"
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 
 const useCostAmount = (baseAmount) => {
   const { coinPrice } = useEthPrice()
-  console.log("ziad", coinPrice)
 
   const costAmount = useMemo(() => {
     const amount = (baseAmount * coinPrice) / 0.01

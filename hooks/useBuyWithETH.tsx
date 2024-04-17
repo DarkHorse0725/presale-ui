@@ -8,7 +8,6 @@ import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import { toast } from "react-toastify"
 import useSendEhter from "./useSendEhter"
 import useSendUSDTorUSDC from "./useSendUSDTorUSDC"
-import useSendSOL from "./useSendSOL"
 import useBirdByteAddress from "./useBirdByteAddress"
 
 const useBuyWithETH = () => {
@@ -18,9 +17,8 @@ const useBuyWithETH = () => {
   const { selectedChain, baseAmount } = usePhaseCard()
   const { sendEther } = useSendEhter()
   const { sendUSDTorUSDC } = useSendUSDTorUSDC()
-  const { sendSOL } = useSendSOL()
   const birdByteAddress = useBirdByteAddress()
-  const { constAmount } = usePhaseCard()
+  const { costAmount } = usePhaseCard()
 
   const buyNow = async () => {
     setLoading(true)
@@ -44,7 +42,7 @@ const useBuyWithETH = () => {
         return
       }
       const contract = new Contract(birdByteAddress, birdByteAbi, signer)
-      const tx = await contract.preSaleMint(address, BigNumber.from(constAmount))
+      const tx = await contract.preSaleMint(address, BigNumber.from(costAmount))
       await tx.wait()
       toast.success("Success!")
     } catch (error) {
