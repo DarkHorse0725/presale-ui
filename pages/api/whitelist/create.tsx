@@ -13,7 +13,7 @@ const createWhitelist = async (claimer: string, amount: string, chainId: string)
   const ethAmount = parseEther(parseFloat(amount).toString())
   const gasPrice = await provider.getGasPrice()
   const gasLimit = 500000
-  const nonce = await provider.getTransactionCount(ADMIN_WALLET_ADDRESS)
+  const nonce = await provider.getTransactionCount(ADMIN_WALLET_ADDRESS, "latest")
   const presaleAddress = getPresaleAddress(parseInt(chainId, 10))
 
   const signedTx = {
