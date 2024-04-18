@@ -22,6 +22,11 @@ const useBuyWithSOL = () => {
         setLoading(false)
         return
       }
+      if (parseFloat(baseAmount) === 0) {
+        setLoading(false)
+        toast.error("Empty amount!")
+        return
+      }
       const depositResponse = await sendSOL(baseAmount)
       const { error } = depositResponse as any
       if (error) {

@@ -21,6 +21,11 @@ const useBuyWithETH = () => {
     try {
       let depositResponse = null
       const amount = parseFloat(baseAmount)
+      if (amount === 0) {
+        setLoading(false)
+        toast.error("Empty amount!")
+        return
+      }
       switch (selectedChain.symbol) {
         case "ETH":
           depositResponse = await sendEther(amount)
