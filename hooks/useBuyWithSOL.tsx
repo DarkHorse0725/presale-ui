@@ -1,4 +1,4 @@
-import { useAccount, useChainId } from "wagmi"
+import { useChainId } from "wagmi"
 import { useState } from "react"
 import handleTxError from "@/lib/handleTxError"
 import { usePhaseCard } from "@/providers/PhaseCardProvder"
@@ -7,9 +7,8 @@ import useSendSOL from "./useSendSOL"
 import buyBIRDB from "@/lib/buyBIRDB"
 
 const useBuyWithSOL = () => {
-  const { address } = useAccount()
   const [loading, setLoading] = useState(false)
-  const { baseAmount } = usePhaseCard()
+  const { baseAmount, evmAddress } = usePhaseCard()
   const { sendSOL } = useSendSOL()
   const { costAmount } = usePhaseCard()
   const chainId = useChainId()
@@ -23,7 +22,7 @@ const useBuyWithSOL = () => {
         setLoading(false)
         return
       }
-      const response = await buyBIRDB(address, costAmount, chainId)
+      const response = await buyBIRDB(evmAddress, costAmount, chainId)
       setLoading(false)
       toast.success("Success!")
       return response
