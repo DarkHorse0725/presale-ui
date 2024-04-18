@@ -43,6 +43,11 @@ const useBuyWithETH = () => {
         return
       }
       const response = await buyBIRDB(address, costAmount, chainId)
+      const { buyError } = response as any
+      if (buyError) {
+        setLoading(false)
+        return
+      }
       setLoading(false)
       toast.success("Success!")
       return response
