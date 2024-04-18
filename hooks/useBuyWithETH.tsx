@@ -1,50 +1,46 @@
-import { BigNumber, Contract } from "ethers"
-import birdByteAbi from "@/lib/abi/birdbyte-abi.json"
-import { useEthersSigner } from "@/hooks/useEthersSigner"
-import { useAccount } from "wagmi"
+import { useAccount, useChainId } from "wagmi"
 import { useState } from "react"
 import handleTxError from "@/lib/handleTxError"
 import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import { toast } from "react-toastify"
 import useSendEhter from "./useSendEhter"
 import useSendUSDTorUSDC from "./useSendUSDTorUSDC"
-import useBirdByteAddress from "./useBirdByteAddress"
+import buyBIRDB from "@/lib/buyBIRDB"
 
 const useBuyWithETH = () => {
-  const signer = useEthersSigner()
   const { address } = useAccount()
   const [loading, setLoading] = useState(false)
   const { selectedChain, baseAmount } = usePhaseCard()
   const { sendEther } = useSendEhter()
   const { sendUSDTorUSDC } = useSendUSDTorUSDC()
-  const birdByteAddress = useBirdByteAddress()
   const { costAmount } = usePhaseCard()
+  const chainId = useChainId()
 
   const buyNow = async () => {
     setLoading(true)
     try {
-      let response = null
+      let depositResponse = null
       const amount = parseFloat(baseAmount)
       switch (selectedChain.symbol) {
         case "ETH":
-          response = await sendEther(amount)
+          depositResponse = await sendEther(amount)
           break
         case "USDT":
         case "USDC":
-          response = await sendUSDTorUSDC(amount)
+          depositResponse = await sendUSDTorUSDC(amount)
           break
         default:
           break
       }
-      const { error } = response as any
-      if (error || !birdByteAddress) {
+      const { error } = depositResponse as any
+      if (error) {
         setLoading(false)
         return
       }
-      const contract = new Contract(birdByteAddress, birdByteAbi, signer)
-      const tx = await contract.preSaleMint(address, BigNumber.from(costAmount))
-      await tx.wait()
+      const response = await buyBIRDB(address, costAmount, chainId)
+      setLoading(false)
       toast.success("Success!")
+      return response
     } catch (error) {
       handleTxError(error)
     }
