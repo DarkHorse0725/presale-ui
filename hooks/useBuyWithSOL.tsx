@@ -1,36 +1,42 @@
-import { BigNumber, Contract } from "ethers"
-import birdByteAbi from "@/lib/abi/birdbyte-abi.json"
-import { useEthersSigner } from "@/hooks/useEthersSigner"
-import { useAccount } from "wagmi"
+import { useChainId } from "wagmi"
 import { useState } from "react"
 import handleTxError from "@/lib/handleTxError"
 import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import { toast } from "react-toastify"
 import useSendSOL from "./useSendSOL"
-import useBirdByteAddress from "./useBirdByteAddress"
+import buyBIRDB from "@/lib/buyBIRDB"
+import isEVMAddress from "@/lib/isEVMAddress"
 
 const useBuyWithSOL = () => {
-  const signer = useEthersSigner()
-  const { address } = useAccount()
   const [loading, setLoading] = useState(false)
-  const { baseAmount } = usePhaseCard()
+  const { baseAmount, evmAddress } = usePhaseCard()
   const { sendSOL } = useSendSOL()
-  const birdByteAddress = useBirdByteAddress()
   const { costAmount } = usePhaseCard()
+  const chainId = useChainId()
 
   const buyNow = async () => {
     setLoading(true)
     try {
-      const response = await sendSOL(baseAmount)
-      const { error } = response as any
-      if (error || !birdByteAddress) {
+      if (!isEVMAddress(evmAddress)) {
+        toast.error("Invalid EVM address!")
         setLoading(false)
         return
       }
-      const contract = new Contract(birdByteAddress, birdByteAbi, signer)
-      const tx = await contract.preSaleMint(address, BigNumber.from(costAmount))
-      await tx.wait()
+      if (parseFloat(baseAmount) === 0) {
+        setLoading(false)
+        toast.error("Empty amount!")
+        return
+      }
+      const depositResponse = await sendSOL(baseAmount)
+      const { error } = depositResponse as any
+      if (error) {
+        setLoading(false)
+        return
+      }
+      const response = await buyBIRDB(evmAddress, costAmount, chainId)
+      setLoading(false)
       toast.success("Success!")
+      return response
     } catch (error) {
       handleTxError(error)
     }
