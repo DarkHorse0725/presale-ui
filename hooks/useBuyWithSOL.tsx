@@ -1,36 +1,32 @@
-import { BigNumber, Contract } from "ethers"
-import birdByteAbi from "@/lib/abi/birdbyte-abi.json"
-import { useEthersSigner } from "@/hooks/useEthersSigner"
-import { useAccount } from "wagmi"
+import { useAccount, useChainId } from "wagmi"
 import { useState } from "react"
 import handleTxError from "@/lib/handleTxError"
 import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import { toast } from "react-toastify"
 import useSendSOL from "./useSendSOL"
-import useBirdByteAddress from "./useBirdByteAddress"
+import buyBIRDB from "@/lib/buyBIRDB"
 
 const useBuyWithSOL = () => {
-  const signer = useEthersSigner()
   const { address } = useAccount()
   const [loading, setLoading] = useState(false)
   const { baseAmount } = usePhaseCard()
   const { sendSOL } = useSendSOL()
-  const birdByteAddress = useBirdByteAddress()
   const { costAmount } = usePhaseCard()
+  const chainId = useChainId()
 
   const buyNow = async () => {
     setLoading(true)
     try {
-      const response = await sendSOL(baseAmount)
-      const { error } = response as any
-      if (error || !birdByteAddress) {
+      const depositResponse = await sendSOL(baseAmount)
+      const { error } = depositResponse as any
+      if (error) {
         setLoading(false)
         return
       }
-      const contract = new Contract(birdByteAddress, birdByteAbi, signer)
-      const tx = await contract.preSaleMint(address, BigNumber.from(costAmount))
-      await tx.wait()
+      const response = await buyBIRDB(address, costAmount, chainId)
+      setLoading(false)
       toast.success("Success!")
+      return response
     } catch (error) {
       handleTxError(error)
     }

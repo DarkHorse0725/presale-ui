@@ -18,7 +18,7 @@ const createWhitelist = async (claimer: string, amount: string, chainId: string)
 
   const signedTx = {
     to: presaleAddress,
-    chainId: parseInt(chainId),
+    chainId: parseInt(chainId, 10),
     nonce,
     data: new Interface(presaleAbi).encodeFunctionData("presale", [claimer, ethAmount]),
     gasPrice,

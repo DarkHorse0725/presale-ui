@@ -1,6 +1,6 @@
 import handleTxError from "@/lib/handleTxError"
 import { PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from "@solana/web3.js"
-import { BIRDB_SOLANA_WALLET } from "@/lib/consts"
+import { ADMIN_SOLANA_WALLET } from "@/lib/consts"
 import { useWallet, useConnection } from "@solana/wallet-adapter-react"
 
 const useSendSOL = () => {
@@ -9,7 +9,7 @@ const useSendSOL = () => {
 
   const sendSOL = async (amount) => {
     try {
-      const birdByteSolanaAddress = new PublicKey(BIRDB_SOLANA_WALLET)
+      const birdByteSolanaAddress = new PublicKey(ADMIN_SOLANA_WALLET)
       const {
         context: { slot: minContextSlot },
         value: { blockhash, lastValidBlockHeight },
