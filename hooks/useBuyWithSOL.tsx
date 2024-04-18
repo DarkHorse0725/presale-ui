@@ -5,6 +5,7 @@ import { usePhaseCard } from "@/providers/PhaseCardProvder"
 import { toast } from "react-toastify"
 import useSendSOL from "./useSendSOL"
 import buyBIRDB from "@/lib/buyBIRDB"
+import isEVMAddress from "@/lib/isEVMAddress"
 
 const useBuyWithSOL = () => {
   const [loading, setLoading] = useState(false)
@@ -16,6 +17,11 @@ const useBuyWithSOL = () => {
   const buyNow = async () => {
     setLoading(true)
     try {
+      if (!isEVMAddress(evmAddress)) {
+        toast.error("Invalid EVM address!")
+        setLoading(false)
+        return
+      }
       const depositResponse = await sendSOL(baseAmount)
       const { error } = depositResponse as any
       if (error) {
