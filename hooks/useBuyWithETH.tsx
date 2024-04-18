@@ -48,8 +48,9 @@ const useBuyWithETH = () => {
       return response
     } catch (error) {
       handleTxError(error)
+      setLoading(false)
+      return { error }
     }
-    setLoading(false)
   }
   return {
     loading,
