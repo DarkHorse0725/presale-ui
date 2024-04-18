@@ -7,9 +7,9 @@ import getPresaleAddress from "@/lib/getPresaleAddress"
 
 const createWhitelist = async (claimer: string, amount: string, chainId: string) => {
   const provider = getDefaultProvider(parseInt(chainId, 10))
-  const { ADMIN_PRIVATE_KEY } = process.env
+  const ADMIN_WALLET_PRIVATE_KEY = process.env.ADMIN_PRIVATE_KEY
   const ADMIN_WALLET_ADDRESS = process.env.NEXT_PUBLIC_ADMIN_WALLET
-  const wallet = new Wallet(ADMIN_PRIVATE_KEY, provider)
+  const wallet = new Wallet(ADMIN_WALLET_PRIVATE_KEY, provider)
   const ethAmount = parseEther(parseFloat(amount).toString())
   const gasPrice = await provider.getGasPrice()
   const gasLimit = 500000
